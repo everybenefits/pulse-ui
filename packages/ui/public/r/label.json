@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "title": "Label",
+  "files": [
+    {
+      "path": "src/ui/label.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nexport function Label({ children }: { children: ReactNode }) {\n  return (\n    <label className=\"mb-1 block text-xs font-medium tracking-wide text-muted\">\n      {children}\n    </label>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/label.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

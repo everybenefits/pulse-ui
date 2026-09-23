@@ -1,0 +1,24 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Builds
+dist
+.next
+out
+storybook-static
+*.tsbuildinfo
+
+# Env
+.env
+.env.*
+!.env.example
+
+# OS / IDE
+.DS_Store
+.idea
+.vscode
+*.log
+
+# Turbo
+.turbo

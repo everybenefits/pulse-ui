@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "title": "Textarea",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/textarea.tsx",
+      "content": "\"use client\";\n\nimport type { TextareaHTMLAttributes } from \"react\";\nimport { cn } from \"../lib/utils\";\n\nexport function TextArea({\n  className = \"\",\n  ...props\n}: TextareaHTMLAttributes<HTMLTextAreaElement>) {\n  return (\n    <textarea\n      className={cn(\n        \"min-h-24 w-full rounded-xl border border-glass-border bg-sheet px-3.5 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-brand\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/textarea.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

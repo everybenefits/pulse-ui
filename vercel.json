@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm --filter @pulse/www build && pnpm build-storybook && rm -rf apps/www/public/storybook && cp -R packages/ui/storybook-static apps/www/public/storybook && cp -R packages/ui/public/r apps/www/public/r",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "outputDirectory": "apps/www/.next"
+}

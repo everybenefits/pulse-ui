@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "panel",
+  "title": "Panel",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/panel.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { cn } from \"../lib/utils\";\n\nexport function Panel({\n  children,\n  className = \"\",\n}: {\n  children: ReactNode;\n  className?: string;\n}) {\n  return <div className={cn(\"pulse-sheet p-4\", className)}>{children}</div>;\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/panel.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

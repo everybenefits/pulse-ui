@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "title": "Avatar",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"../lib/utils\";\n\nexport function Avatar({\n  name,\n  photoUrl,\n  size = 36,\n  className = \"\",\n}: {\n  name: string;\n  photoUrl?: string | null;\n  size?: number;\n  className?: string;\n}) {\n  const initial = (name.trim() || \"U\").charAt(0).toUpperCase();\n  // Native <img>: Storage emulator URLs use LAN IPs that next/image rejects\n  // unless every host is listed in next.config.\n  return (\n    <div\n      className={cn(\n        \"relative shrink-0 overflow-hidden rounded-full bg-brand/14 text-brand\",\n        className,\n      )}\n      style={{ width: size, height: size }}\n    >\n      {photoUrl ? (\n        <img\n          src={photoUrl}\n          alt=\"\"\n          width={size}\n          height={size}\n          decoding=\"async\"\n          referrerPolicy=\"no-referrer\"\n          className=\"h-full w-full object-cover\"\n        />\n      ) : (\n        <span\n          className=\"flex h-full w-full items-center justify-center font-display font-semibold\"\n          style={{ fontSize: size * 0.36 }}\n        >\n          {initial}\n        </span>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/input.tsx",
+      "content": "\"use client\";\n\nimport { forwardRef, type InputHTMLAttributes } from \"react\";\nimport { cn } from \"../lib/utils\";\n\ntype ControlSize = \"md\" | \"sm\";\n\nconst inputSize: Record<ControlSize, string> = {\n  md: \"h-10 rounded-xl px-3.5 text-sm\",\n  sm: \"h-8 rounded-lg px-2.5 text-xs\",\n};\n\nexport const Input = forwardRef<\n  HTMLInputElement,\n  Omit<InputHTMLAttributes<HTMLInputElement>, \"size\"> & { size?: ControlSize }\n>(function Input({ className = \"\", size = \"md\", ...props }, ref) {\n  return (\n    <input\n      ref={ref}\n      className={cn(\n        \"w-full border border-glass-border bg-sheet text-ink outline-none placeholder:text-muted focus:border-brand\",\n        inputSize[size],\n        className,\n      )}\n      {...props}\n    />\n  );\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

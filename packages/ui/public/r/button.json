@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "title": "Button",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/button.tsx",
+      "content": "\"use client\";\n\nimport { forwardRef, type ButtonHTMLAttributes } from \"react\";\nimport { cn } from \"../lib/utils\";\n\ntype ControlSize = \"md\" | \"sm\";\n\nconst buttonSize: Record<ControlSize, string> = {\n  md: \"h-10 rounded-xl px-4 text-sm\",\n  sm: \"h-8 rounded-lg px-2.5 text-xs\",\n};\n\nexport const Button = forwardRef<\n  HTMLButtonElement,\n  ButtonHTMLAttributes<HTMLButtonElement> & {\n    variant?: \"primary\" | \"secondary\" | \"ghost\" | \"danger\";\n    size?: ControlSize;\n  }\n>(function Button(\n  { variant = \"primary\", size = \"md\", className = \"\", ...props },\n  ref,\n) {\n  const styles = {\n    primary:\n      \"bg-brand text-on-brand hover:brightness-110 disabled:opacity-50\",\n    secondary:\n      \"pulse-sheet text-ink hover:bg-white/[0.04] dark:hover:bg-white/[0.04] disabled:opacity-50\",\n    ghost: \"text-ink hover:bg-white/[0.04] disabled:opacity-50\",\n    danger: \"bg-[#B42318] text-white hover:brightness-110 disabled:opacity-50\",\n  }[variant];\n  return (\n    <button\n      ref={ref}\n      className={cn(\n        \"inline-flex cursor-pointer items-center justify-center gap-1.5 font-semibold transition disabled:cursor-not-allowed\",\n        buttonSize[size],\n        styles,\n        className,\n      )}\n      {...props}\n    />\n  );\n});\n",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

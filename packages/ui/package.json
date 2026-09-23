@@ -1,0 +1,90 @@
+{
+  "name": "@pulse/ui",
+  "version": "1.0.0",
+  "description": "Pulse UI — design system, tokens, theme, and shadcn-style registry",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/every-benefits/pulse-ui.git",
+    "directory": "packages/ui"
+  },
+  "homepage": "https://github.com/every-benefits/pulse-ui",
+  "keywords": [
+    "design-system",
+    "react",
+    "shadcn",
+    "tailwind",
+    "pulse"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "require": "./dist/theme/index.js",
+      "import": "./dist/theme/index.js",
+      "default": "./dist/theme/index.js"
+    },
+    "./tokens.css": "./src/tokens.css"
+  },
+  "files": [
+    "dist",
+    "src/tokens.css",
+    "public/r",
+    "registry.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "pnpm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
+    "test:storybook": "vitest run --project=storybook --config vitest.config.ts",
+    "registry:build": "pnpm dlx shadcn@latest build ./registry.json -o ./public/r",
+    "registry:validate": "pnpm dlx shadcn@latest registry validate",
+    "prepublishOnly": "pnpm run build && pnpm run registry:build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "peerDependencies": {
+    "@tanstack/react-table": "^8.21.0",
+    "motion": "^12.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@pulse/typescript-config": "workspace:*",
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-mcp": "^10.6.0",
+    "@storybook/addon-vitest": "10.6.0",
+    "@storybook/react-vite": "^10.6.0",
+    "@tailwindcss/vite": "^4.1.13",
+    "@tanstack/react-table": "^8.21.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.2",
+    "@vitest/browser": "~4.1.11",
+    "@vitest/browser-playwright": "~4.1.11",
+    "@vitest/coverage-v8": "~4.1.11",
+    "motion": "~12.43.0",
+    "playwright": "^1.63.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "storybook": "^10.6.0",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vitest": "~4.1.11"
+  }
+}

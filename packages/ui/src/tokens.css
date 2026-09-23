@@ -1,0 +1,180 @@
+/**
+ * Canonical Pulse design tokens (web theme).
+ * Import after `@import "tailwindcss"` in app globals, e.g.:
+ *   @import "tailwindcss";
+ *   @import "@pulse/ui/tokens.css";
+ *
+ * Shell-only tokens (--rail, --panel, spacing scale) stay in apps until adoption.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  a[href],
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for],
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  input[type="file"]:not(:disabled),
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"],
+  input:disabled,
+  select:disabled {
+    cursor: not-allowed;
+  }
+}
+
+:root {
+  --brand: #1f6b4a;
+  --ink: #0c0d10;
+  --muted: #5c6570;
+  --mesh-base: #f3f5f7;
+  --mesh-deep: #ffffff;
+  --mesh-blob: #e4e7eb;
+  --glass: #ffffff;
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --surface: #ffffff;
+  --on-brand: #ffffff;
+  --danger: #d64545;
+  --warn: #d4a017;
+  --ok: #3d9a6a;
+  --radius-sheet: 14px;
+  --radius-row: 12px;
+  --radius-pill: 999px;
+  --public-header-height: 4.25rem;
+  /* Shell aliases (web-canonical: map to mesh surfaces) */
+  --panel: var(--mesh-deep);
+  --rail: var(--mesh-base);
+}
+
+.dark {
+  --ink: #f4f3f0;
+  --muted: #8b9098;
+  --mesh-base: #0c0d10;
+  --mesh-deep: #16171c;
+  --mesh-blob: #1c1d24;
+  --glass: #1c1d24;
+  --glass-border: rgba(255, 255, 255, 0.13);
+  --surface: #16171c;
+  --on-brand: #ffffff;
+  --panel: var(--mesh-deep);
+  --rail: var(--mesh-base);
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-mesh: var(--mesh-base);
+  --color-sheet: var(--mesh-deep);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-surface: var(--surface);
+  --color-on-brand: var(--on-brand);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --color-ok: var(--ok);
+  --color-panel: var(--panel);
+  --color-rail: var(--rail);
+  --font-display: var(--font-outfit);
+  --font-sans: var(--font-figtree);
+}
+
+/* Quiet mesh: diagonal wash + soft blobs */
+.mesh-bg {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--mesh-blob) 55%, transparent) 0%,
+      transparent 42%,
+      color-mix(in srgb, var(--mesh-blob) 35%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 12% 18%,
+      color-mix(in srgb, var(--brand) 10%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 88% 12%,
+      color-mix(in srgb, var(--mesh-blob) 80%, transparent),
+      transparent 55%
+    ),
+    var(--mesh-base);
+}
+
+.dark .mesh-bg {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--mesh-blob) 40%, transparent) 0%,
+      transparent 45%,
+      color-mix(in srgb, var(--mesh-blob) 25%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 12% 18%,
+      color-mix(in srgb, var(--brand) 12%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 88% 12%,
+      color-mix(in srgb, var(--mesh-blob) 70%, transparent),
+      transparent 55%
+    ),
+    var(--mesh-base);
+}
+
+/* Matte Pulse sheet — no frosted blur */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+
+.pulse-sheet {
+  background: var(--mesh-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sheet);
+}
+
+.pulse-row {
+  background: var(--mesh-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-row);
+}
+
+.pulse-tab-pill {
+  background: color-mix(in srgb, var(--mesh-deep) 94%, transparent);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.studio-panel {
+  background: var(--panel);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sheet);
+}
+
+.studio-rail {
+  background: var(--rail);
+  border-right: 1px solid var(--glass-border);
+}
+
+.bubble-mine {
+  background: color-mix(in srgb, var(--brand) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 28%, transparent);
+  border-radius: 18px 18px 4px 18px;
+  color: var(--ink);
+}
+
+.bubble-other {
+  background: var(--mesh-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px 18px 18px 4px;
+  color: var(--ink);
+}

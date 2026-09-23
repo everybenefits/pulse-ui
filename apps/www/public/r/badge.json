@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "files": [
+    {
+      "path": "src/ui/badge.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nexport function Badge({ children }: { children: ReactNode }) {\n  return (\n    <span className=\"inline-flex rounded-md bg-brand/14 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand\">\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "title": "Search Input",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "src/ui/search-input.tsx",
+      "content": "\"use client\";\n\nimport type { InputHTMLAttributes } from \"react\";\nimport { cn } from \"../lib/utils\";\n\ntype ControlSize = \"md\" | \"sm\";\n\nconst searchInputSize: Record<ControlSize, string> = {\n  md: \"h-10 rounded-xl py-2 pr-3.5 pl-10 text-sm\",\n  sm: \"h-8 rounded-lg py-1.5 pr-3 pl-9 text-xs\",\n};\n\nexport function SearchInput({\n  className = \"\",\n  size = \"md\",\n  ...props\n}: Omit<InputHTMLAttributes<HTMLInputElement>, \"size\"> & {\n  size?: ControlSize;\n}) {\n  return (\n    <div className={cn(\"relative w-full\", className)}>\n      <svg\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        aria-hidden\n        className={cn(\n          \"pointer-events-none absolute top-1/2 -translate-y-1/2 text-muted\",\n          size === \"sm\" ? \"left-2.5 h-3.5 w-3.5\" : \"left-3 h-4 w-4\",\n        )}\n      >\n        <path\n          stroke=\"currentColor\"\n          strokeWidth=\"1.8\"\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          d=\"m21 21-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z\"\n        />\n      </svg>\n      <input\n        type=\"search\"\n        className={cn(\n          \"w-full border border-glass-border bg-transparent text-ink outline-none placeholder:text-muted focus:border-brand focus:ring-2 focus:ring-brand/15\",\n          searchInputSize[size],\n        )}\n        {...props}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/search-input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "title": "Drawer",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "src/ui/drawer.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\nimport { Button } from \"./button\";\n\nexport function Drawer({\n  open,\n  title,\n  subtitle,\n  onClose,\n  children,\n  footer,\n  closeLabel = \"Close\",\n}: {\n  open: boolean;\n  title: string;\n  subtitle?: string;\n  onClose: () => void;\n  children: ReactNode;\n  footer?: ReactNode;\n  closeLabel?: string;\n}) {\n  if (!open) return null;\n  return (\n    <div className=\"fixed inset-0 z-50 flex justify-end\">\n      <button\n        type=\"button\"\n        aria-label={closeLabel}\n        className=\"absolute inset-0 bg-black/40\"\n        onClick={onClose}\n      />\n      <aside className=\"relative flex h-full w-full max-w-md flex-col border-l border-glass-border bg-sheet shadow-xl\">\n        <header className=\"flex items-start justify-between gap-3 border-b border-glass-border px-5 py-4\">\n          <div>\n            <h2 className=\"font-display text-xl font-bold tracking-tight\">\n              {title}\n            </h2>\n            {subtitle ? (\n              <p className=\"mt-1 text-sm text-muted\">{subtitle}</p>\n            ) : null}\n          </div>\n          <Button\n            variant=\"ghost\"\n            className=\"h-9 px-3 text-xs\"\n            onClick={onClose}\n          >\n            {closeLabel}\n          </Button>\n        </header>\n        <div className=\"flex-1 overflow-y-auto px-5 py-4\">{children}</div>\n        {footer ? (\n          <footer className=\"border-t border-glass-border px-5 py-4\">\n            {footer}\n          </footer>\n        ) : null}\n      </aside>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/drawer.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

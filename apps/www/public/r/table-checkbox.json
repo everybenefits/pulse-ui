@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-checkbox",
+  "title": "Table Checkbox",
+  "files": [
+    {
+      "path": "src/ui/table-checkbox.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef, type InputHTMLAttributes } from \"react\";\n\ntype TableCheckboxProps = Omit<\n  InputHTMLAttributes<HTMLInputElement>,\n  \"type\" | \"className\"\n> & {\n  indeterminate?: boolean;\n};\n\n/** Custom selection checkbox for DataTable bulk select. */\nexport function TableCheckbox({\n  indeterminate = false,\n  checked,\n  disabled,\n  ...props\n}: TableCheckboxProps) {\n  const ref = useRef<HTMLInputElement>(null);\n\n  useEffect(() => {\n    if (ref.current) {\n      ref.current.indeterminate = indeterminate && !checked;\n    }\n  }, [indeterminate, checked]);\n\n  const isIndeterminate = indeterminate && !checked;\n  const isOn = Boolean(checked) || isIndeterminate;\n\n  return (\n    <label\n      className={`relative inline-flex h-8 w-8 items-center justify-center ${\n        disabled ? \"cursor-not-allowed opacity-40\" : \"cursor-pointer\"\n      }`}\n    >\n      <input\n        ref={ref}\n        type=\"checkbox\"\n        className=\"peer sr-only\"\n        checked={Boolean(checked)}\n        disabled={disabled}\n        {...props}\n      />\n      <span\n        aria-hidden\n        className={`flex h-[1.125rem] w-[1.125rem] items-center justify-center rounded-[6px] border transition ${\n          isOn\n            ? \"border-brand bg-brand text-on-brand shadow-sm shadow-brand/25\"\n            : \"border-glass-border bg-sheet text-transparent shadow-sm peer-hover:border-brand/45 peer-hover:bg-brand/[0.06]\"\n        } peer-focus-visible:ring-2 peer-focus-visible:ring-brand/30 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-sheet`}\n      >\n        {isIndeterminate ? (\n          <svg viewBox=\"0 0 16 16\" className=\"h-3 w-3\" fill=\"none\">\n            <path\n              d=\"M4 8h8\"\n              stroke=\"currentColor\"\n              strokeWidth=\"2.2\"\n              strokeLinecap=\"round\"\n            />\n          </svg>\n        ) : (\n          <svg viewBox=\"0 0 16 16\" className=\"h-3 w-3\" fill=\"none\">\n            <path\n              d=\"M3.5 8.2 6.4 11l6.1-6.5\"\n              stroke=\"currentColor\"\n              strokeWidth=\"2.2\"\n              strokeLinecap=\"round\"\n              strokeLinejoin=\"round\"\n            />\n          </svg>\n        )}\n      </span>\n    </label>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/table-checkbox.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
