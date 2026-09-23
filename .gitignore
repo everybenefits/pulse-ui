@@ -22,3 +22,4 @@ storybook-static
 
 # Turbo
 .turbo
+*.tgz
