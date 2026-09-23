@@ -24,7 +24,7 @@ const DOCS =
   process.env.NEXT_PUBLIC_STORYBOOK_URL ?? "https://ui.pulse.app/storybook";
 const GITHUB =
   process.env.NEXT_PUBLIC_GITHUB_URL ??
-  "https://github.com/every-benefits/pulse-ui";
+  "https://github.com/everybenefits/pulse-ui";
 const NPM_URL = "https://www.npmjs.com/package/@pulse/ui";
 
 type DemoRow = {

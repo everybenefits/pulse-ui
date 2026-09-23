@@ -5,10 +5,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/every-benefits/pulse-ui.git",
+    "url": "https://github.com/everybenefits/pulse-ui.git",
     "directory": "packages/ui"
   },
-  "homepage": "https://github.com/every-benefits/pulse-ui",
+  "homepage": "https://github.com/everybenefits/pulse-ui",
   "keywords": [
     "design-system",
     "react",

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "pulse",
-  "homepage": "https://github.com/every-benefits/pulse-ui",
+  "homepage": "https://github.com/everybenefits/pulse-ui",
   "items": [
     {
       "name": "utils",
