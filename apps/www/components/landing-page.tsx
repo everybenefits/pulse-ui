@@ -15,10 +15,11 @@ import { useMemo, useState, type ReactNode } from "react";
 import type { ColumnDef } from "@tanstack/react-table";
 
 const NPM = "pnpm add @pulse/ui";
-const REGISTRY_URL =
-  typeof window !== "undefined"
-    ? `${window.location.origin}/r/{name}.json`
-    : "https://ui.pulse.app/r/{name}.json";
+/** Stable across SSR/CSR — avoids hydration mismatches. */
+const REGISTRY_EXAMPLE =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+  "https://ui.pulse.app";
+const REGISTRY_URL = `${REGISTRY_EXAMPLE}/r/{name}.json`;
 
 const DOCS =
   process.env.NEXT_PUBLIC_STORYBOOK_URL ?? "https://ui.pulse.app/storybook";
@@ -43,7 +44,10 @@ const DEMO_ROWS: DemoRow[] = [
 function SiteNav() {
   return (
     <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-5 md:px-10">
-      <a href="#top" className="font-display text-lg font-semibold tracking-tight text-ink">
+      <a
+        href="#top"
+        className="font-display text-lg font-semibold tracking-tight text-ink"
+      >
         Pulse UI
       </a>
       <nav className="flex items-center gap-2 sm:gap-3">
@@ -106,45 +110,45 @@ function HeroCanvas() {
   );
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -right-8 top-28 w-[min(92vw,520px)] animate-float opacity-95 md:right-8 md:top-24 lg:right-16">
-        <div className="relative">
-          <div className="animate-pulse-ring absolute -inset-6 rounded-[28px] border border-brand/30" />
-          <Panel className="pointer-events-auto shadow-[0_24px_60px_rgba(12,13,16,0.12)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted">
-                  Live canvas
-                </p>
-                <p className="font-display text-base font-semibold text-ink">
-                  Components on tokens
-                </p>
-              </div>
-              <Badge>@pulse/ui</Badge>
+    <div className="relative w-full animate-float">
+      <div className="relative">
+        <div className="animate-pulse-ring pointer-events-none absolute -inset-4 rounded-[28px] border border-brand/30 sm:-inset-6" />
+        <Panel className="shadow-[0_24px_60px_rgba(12,13,16,0.12)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">
+                Live canvas
+              </p>
+              <p className="font-display text-base font-semibold text-ink">
+                Components on tokens
+              </p>
             </div>
-            <div className="mb-3 flex flex-wrap gap-2">
-              <Button size="sm">Primary</Button>
-              <Button size="sm" variant="secondary">
-                Secondary
-              </Button>
-              <Button size="sm" variant="ghost">
-                Ghost
-              </Button>
-            </div>
-            <SearchInput
-              placeholder="Search members…"
-              className="mb-3"
-              readOnly
-              defaultValue=""
-            />
-            <DataTable
-              columns={columns}
-              data={DEMO_ROWS}
-              pageSize={3}
-              emptyMessage="No members"
-            />
-          </Panel>
-        </div>
+            <Badge>@pulse/ui</Badge>
+          </div>
+          <div className="mb-3 flex flex-wrap gap-2">
+            <Button size="sm">Primary</Button>
+            <Button size="sm" variant="secondary">
+              Secondary
+            </Button>
+            <Button size="sm" variant="ghost">
+              Ghost
+            </Button>
+          </div>
+          <SearchInput
+            placeholder="Search members…"
+            className="mb-3"
+            readOnly
+            defaultValue=""
+          />
+          <DataTable
+            columns={columns}
+            data={DEMO_ROWS}
+            pageSize={3}
+            emptyMessage="No members"
+            className="rounded-xl"
+            tableClassName="min-w-0"
+          />
+        </Panel>
       </div>
     </div>
   );
@@ -307,31 +311,34 @@ export function LandingPage() {
 
   return (
     <div id="top" className="min-h-screen bg-[var(--mesh-base)] text-ink">
-      {/* Hero — one composition */}
-      <section className="relative min-h-[100svh] mesh-bg overflow-hidden">
+      <section className="relative min-h-[100svh] mesh-bg overflow-x-clip">
         <SiteNav />
-        <HeroCanvas />
-        <div className="relative z-10 flex min-h-[100svh] max-w-xl flex-col justify-center px-6 pb-24 pt-28 md:px-10 lg:max-w-2xl">
-          <p className="animate-fade-up font-display text-5xl font-semibold tracking-tight text-ink sm:text-6xl md:text-7xl">
-            Pulse UI
-          </p>
-          <h1 className="animate-fade-up-delay mt-5 max-w-lg font-display text-2xl font-semibold leading-snug tracking-tight text-ink sm:text-3xl">
-            Design system + shadcn registry for product teams
-          </h1>
-          <p className="animate-fade-up-delay-2 mt-4 max-w-md text-base text-muted sm:text-lg">
-            Tokens, theme, and owned component copies — ship consistent React
-            surfaces without fighting a remote UI kit.
-          </p>
-          <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-3">
-            <a href="#install">
-              <Button>pnpm add @pulse/ui</Button>
-            </a>
-            <a href={DOCS} target="_blank" rel="noreferrer">
-              <Button variant="secondary">Open docs</Button>
-            </a>
-            <a href={DOCS} target="_blank" rel="noreferrer">
-              <Button variant="ghost">View Storybook</Button>
-            </a>
+        <div className="mx-auto grid min-h-[100svh] max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-20 pt-28 md:px-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,32rem)] lg:gap-14">
+          <div className="relative z-10 max-w-xl">
+            <p className="animate-fade-up font-display text-5xl font-semibold tracking-tight text-ink sm:text-6xl md:text-7xl">
+              Pulse UI
+            </p>
+            <h1 className="animate-fade-up-delay mt-5 font-display text-2xl font-semibold leading-snug tracking-tight text-ink sm:text-3xl">
+              Design system + shadcn registry for product teams
+            </h1>
+            <p className="animate-fade-up-delay-2 mt-4 max-w-md text-base text-muted sm:text-lg">
+              Tokens, theme, and owned component copies — ship consistent React
+              surfaces without fighting a remote UI kit.
+            </p>
+            <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-3">
+              <a href="#install">
+                <Button>pnpm add @pulse/ui</Button>
+              </a>
+              <a href={DOCS} target="_blank" rel="noreferrer">
+                <Button variant="secondary">Open docs</Button>
+              </a>
+              <a href={DOCS} target="_blank" rel="noreferrer">
+                <Button variant="ghost">View Storybook</Button>
+              </a>
+            </div>
+          </div>
+          <div className="relative z-10 w-full min-w-0 justify-self-stretch lg:justify-self-end">
+            <HeroCanvas />
           </div>
         </div>
       </section>
@@ -429,9 +436,7 @@ import { ThemeProvider } from "@pulse/ui/theme";`}</CodeBlock>
               <Button variant="ghost">Storybook</Button>
             </a>
           </div>
-          <p className="mt-12 text-xs text-muted">
-            © {new Date().getFullYear()} Pulse UI · MIT
-          </p>
+          <p className="mt-12 text-xs text-muted">© 2026 Pulse UI · MIT</p>
         </div>
       </footer>
     </div>

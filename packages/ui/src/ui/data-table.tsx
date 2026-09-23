@@ -13,6 +13,7 @@ import {
 import { Button } from "./button";
 import { DataTableSkeleton } from "./data-table-skeleton";
 import { TableCheckbox } from "./table-checkbox";
+import { cn } from "../lib/utils";
 
 export type DataTableProps<T> = {
   columns: ColumnDef<T, unknown>[];
@@ -42,6 +43,10 @@ export type DataTableProps<T> = {
   canSelectRow?: (row: T) => boolean;
   rowSelection?: RowSelectionState;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
+  /** Outer wrapper classes (default: studio-panel). */
+  className?: string;
+  /** `<table>` classes — override default min-width for compact embeds. */
+  tableClassName?: string;
 };
 
 export function DataTable<T>({
@@ -70,6 +75,8 @@ export function DataTable<T>({
   canSelectRow,
   rowSelection,
   onRowSelectionChange,
+  className = "",
+  tableClassName = "",
 }: DataTableProps<T>) {
   const selectionColumn = useMemo<ColumnDef<T, unknown> | null>(() => {
     if (!enableRowSelection) return null;
@@ -126,7 +133,7 @@ export function DataTable<T>({
   const colCount = allColumns.length;
 
   return (
-    <div className="studio-panel overflow-hidden rounded-2xl">
+    <div className={cn("studio-panel overflow-hidden rounded-2xl", className)}>
       {toolbar ? (
         <div className="flex flex-wrap items-end gap-3 border-b border-glass-border px-3 py-3 sm:px-4">
           {toolbar}
@@ -146,7 +153,12 @@ export function DataTable<T>({
       ) : null}
 
       <div className="relative max-h-[min(70vh,44rem)] overflow-auto">
-        <table className="w-full min-w-[40rem] border-separate border-spacing-0 text-left text-xs">
+        <table
+          className={cn(
+            "w-full min-w-[40rem] border-separate border-spacing-0 text-left text-xs",
+            tableClassName,
+          )}
+        >
           <thead className="sticky top-0 z-10">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
