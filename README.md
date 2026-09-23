@@ -44,11 +44,19 @@ pnpm ui:build         # rebuild registry → packages/ui/public/r
 
 ## Publish
 
-Tag a release to publish `@pulse/ui` to npm:
+Tag a release to publish `@pulse/ui` to npm (requires `NPM_TOKEN` secret with publish access to the `@pulse` scope):
 
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+Until the scope is published, consumers can override via pnpm:
+
+```yaml
+# pnpm-workspace.yaml
+overrides:
+  "@pulse/ui": "file:../pulse-ui/packages/ui"
 ```
 
 ## License

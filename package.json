@@ -3,13 +3,14 @@
   "private": true,
   "packageManager": "pnpm@11.15.1",
   "scripts": {
-    "build": "pnpm --filter @pulse/ui build && pnpm --filter @pulse/ui registry:build",
+    "build": "pnpm --filter @pulse/ui build && pnpm --filter @pulse/ui registry:build && node ./tooling/scripts/sync-registry-to-www.mjs",
     "dev": "pnpm --filter @pulse/www dev",
     "dev:www": "pnpm --filter @pulse/www dev",
     "storybook": "pnpm --filter @pulse/ui storybook",
     "build-storybook": "pnpm --filter @pulse/ui build-storybook",
     "typecheck": "pnpm -r run typecheck",
-    "ui:build": "pnpm --filter @pulse/ui registry:build",
+    "ui:build": "pnpm --filter @pulse/ui registry:build && node ./tooling/scripts/sync-registry-to-www.mjs",
+    "ui:add": "node ./tooling/scripts/ui-add.mjs",
     "test:storybook": "pnpm --filter @pulse/ui test:storybook"
   },
   "engines": {
