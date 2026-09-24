@@ -1,0 +1,1 @@
+{"version":3,"file":"search-input.d.ts","sourceRoot":"","sources":["../../src/ui/search-input.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,mBAAmB,EAAE,MAAM,OAAO,CAAC;AAGjD,KAAK,WAAW,GAAG,IAAI,GAAG,IAAI,CAAC;AAO/B,wBAAgB,WAAW,CAAC,EAC1B,SAAc,EACd,IAAW,EACX,GAAG,KAAK,EACT,EAAE,IAAI,CAAC,mBAAmB,CAAC,gBAAgB,CAAC,EAAE,MAAM,CAAC,GAAG;IACvD,IAAI,CAAC,EAAE,WAAW,CAAC;CACpB,+BA8BA"}
