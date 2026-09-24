@@ -1,6 +1,6 @@
 {
   "name": "@pulse/ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Pulse UI — design system, tokens, theme, and shadcn-style registry",
   "license": "MIT",
   "repository": {
