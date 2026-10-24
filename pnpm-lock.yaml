@@ -78,8 +78,8 @@ importers:
         specifier: ^10.6.0
         version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))
       '@storybook/addon-mcp':
-        specifier: ^10.6.0
-        version: 10.6.0(@storybook/addon-vitest@10.6.0(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11)(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(vitest@4.1.11))(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(typescript@5.9.3)
+        specifier: ^10.6.2
+        version: 10.6.2(@storybook/addon-vitest@10.6.0(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11)(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(vitest@4.1.11))(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(typescript@5.9.3)
       '@storybook/addon-vitest':
         specifier: 10.6.0
         version: 10.6.0(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11)(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(vitest@4.1.11)
@@ -1061,11 +1061,11 @@ packages:
       '@types/react':
         optional: true
 
-  '@storybook/addon-mcp@10.6.0':
-    resolution: {integrity: sha512-aQza4iMVgB3OXPMJvcnA193xMdt0sG/0+otGCQu8il6LIuFDP60jD5BXWlQiaVog+swqHrjJCFzuUPE+azz7Kg==}
+  '@storybook/addon-mcp@10.6.2':
+    resolution: {integrity: sha512-AY18igxEq+8pEmzFreSklY6nxYe5xHZdqOqHCg10vT6Ms7pYb0XdnSG94mesJ6Zp+1E4o65WDfmsgMadEvJsfw==}
     peerDependencies:
-      '@storybook/addon-vitest': ^10.6.0
-      storybook: ^10.6.0
+      '@storybook/addon-vitest': ^10.6.2
+      storybook: ^10.6.2
     peerDependenciesMeta:
       '@storybook/addon-vitest':
         optional: true
@@ -2911,7 +2911,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react-dom'
 
-  '@storybook/addon-mcp@10.6.0(@storybook/addon-vitest@10.6.0(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11)(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(vitest@4.1.11))(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(typescript@5.9.3)':
+  '@storybook/addon-mcp@10.6.2(@storybook/addon-vitest@10.6.0(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11)(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(vitest@4.1.11))(storybook@10.6.0(@types/react@19.3.0)(react@19.2.8))(typescript@5.9.3)':
     dependencies:
       '@tmcp/adapter-valibot': 0.1.6(tmcp@1.20.0(typescript@5.9.3))(valibot@1.5.0(typescript@5.9.3))
       '@tmcp/transport-http': 0.8.6(tmcp@1.20.0(typescript@5.9.3))
